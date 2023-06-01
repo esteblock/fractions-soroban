@@ -1,14 +1,13 @@
 #![no_std]
-use soroban_sdk::{contractimpl, log, Env, Symbol};
+use soroban_sdk::{contractimpl};
 
-const COUNTER: Symbol = Symbol::short("COUNTER");
+const Q64: u128 = 2u128.pow(64);
 
-const Q64: u128 = 2u128.pow(112);
 
-pub struct IncrementContract;
+pub struct UQ64x64Contract;
 
 #[contractimpl]
-impl IncrementContract {
+impl UQ64x64Contract {
 
     // encode a u64 as a UQ64x64
     pub fn encode(y: u64) -> u128 {
@@ -26,25 +25,6 @@ impl IncrementContract {
 
 
 
-    /// Increment increments an internal counter, and returns the value.
-    pub fn increment(env: Env) -> u32 {
-        // Get the current count.
-        let mut count: u32 = env
-            .storage()
-            .get(&COUNTER)
-            .unwrap_or(Ok(0)) // If no value set, assume 0.
-            .unwrap(); // Panic if the value of COUNTER is not u32.
-        log!(&env, "count: {}", count);
-
-        // Increment the count.
-        count += 1;
-
-        // Save the count.
-        env.storage().set(&COUNTER, &count);
-
-        // Return the count to the caller.
-        count
-    }
 }
 
 mod test;
