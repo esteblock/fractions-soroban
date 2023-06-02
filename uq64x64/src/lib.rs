@@ -17,9 +17,20 @@ impl UQ64x64Contract {
         z
     }
 
+    // returns a UQ64x64 which represents the ratio of the x to y
+    pub fn fraction(x: u64, y: u64) -> u128 {
+        if y == 0 {
+            panic!("DIV_BY_ZERO")
+        }
+        Self::uqdiv(Self::encode(x),y)
+    }
+
+
     // divide a UQ64x64 by a u64, returning a UQ64x64
     pub fn uqdiv(x: u128, y: u64) -> u128 {
-        // if y = 0
+        if y == 0 {
+            panic!("DIV_BY_ZERO")
+        }
 
         let y_into128: u128 = y.into();
         let z: u128 = x / y_into128;
@@ -29,6 +40,15 @@ impl UQ64x64Contract {
     pub fn integer_part(x: u128) -> u64 {
         (x >> 64) as u64
     } 
+
+    /*
+    TODO: factional_part
+    "the lower 64 bits represent the fractional amount"
+    I got these hints... but not working yet
+    // let fractional_part: u128 = result_div & ((1<<64)-1);
+    // let fractional_part: u64 = (result_div & u64::MAX as u128) as u64;
+    */
+
 
     // decode a UQ112x112 into a u128 with 7 decimals of precision
     pub fn decode_with_7_decimals(x: u128) -> u128 {
