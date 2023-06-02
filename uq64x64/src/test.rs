@@ -43,12 +43,16 @@ fn test() {
 
     let result_div = client.uqdiv(&x_encoded, &y);
     /*  This will produce a fixed point unsigned Q64x64
-        number that represents 1/3. This number is 
+        number that represents 22/7. This number is 
         represented as a u128 where the upper 64 bits
         represent the integer amount, and the lower 64 bits
         represent the fractional amount. */
 
     assert_eq!(result_div, expected_div);
+
+    // Fraction is the same as uwdiv(encode(x), y)
+    let fraction = client.fraction(&x,&y);
+    assert_eq!(result_div, fraction);
 
     let integer_part: u64 = client.integer_part(&result_div);
     assert_eq!(integer_part, 3);
