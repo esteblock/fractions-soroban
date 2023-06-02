@@ -3,6 +3,14 @@ Exploring non-integer types in Soroban
 Inspired by: 
 [UniswapV2 QU112X112](https://github.com/Uniswap/v2-core/blob/master/contracts/libraries/UQ112x112.sol), [Compound Finance](https://github.com/compound-finance/open-oracle/blob/master/contracts/Uniswap/UniswapLib.sol) and [hroussille](https://ethereum.stackexchange.com/questions/113130/what-does-decode112with18-do)
 
+# Instructions:
+```
+bash run.sh
+cd uq64x64
+make build
+make test
+```
+
 
 # UQ64X64
 In the context of handling binary fixed-point numbers, an experiment was conducted utilizing the QU64X64 format (as described on https://en.wikipedia.org/wiki/Q_(number_format)).
