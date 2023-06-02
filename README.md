@@ -5,11 +5,11 @@ Inspired by:
 
 
 # UQ64X64
-Experiment to handle binary fixed point numbers (https://en.wikipedia.org/wiki/Q_(number_format))
+In the context of handling binary fixed-point numbers, an experiment was conducted utilizing the QU64X64 format (as described on https://en.wikipedia.org/wiki/Q_(number_format)).
 
-Specifically with QU64X64, which means the fixed point numbers in this format have 64 bits for the integer part and 64 bits for the fraction part. The letter U can be prefixed to the Q to denote an unsigned binary fixed-point format. 
+To elaborate, the QU64X64 format signifies that fixed-point numbers represented in this format have 64 bits allocated for the integer part and 64 bits allocated for the fractional part. The letter "U" can be added as a prefix to "Q" to indicate an unsigned binary fixed-point format.
 
-This QU64X64 object is stored in a 128 bits, hence in a u128 primitive.
+In this case, the QU64X64 object is stored using a 128-bit primitive, specifically a u128.
 
 ## Functions:
 
